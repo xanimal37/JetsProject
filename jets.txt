@@ -1,0 +1,5 @@
+Type,name,speed,range,price
+Cargo Jet,747SP,234234,234234234,2342344
+Fighter Jet,F-4,24324324,5234324,23424234
+*can use whatever jets we want
+*use .split(",")
