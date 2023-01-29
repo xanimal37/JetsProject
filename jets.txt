@@ -1,5 +1,13 @@
-Type,name,speed,range,price
-Cargo Jet,747SP,234234,234234234,2342344
-Fighter Jet,F-4,24324324,5234324,23424234
-*can use whatever jets we want
-*use .split(",")
+Research,747SP,680,7658,7500000
+Research,X-15,4520,280,9000000
+.
+FireFighting,DC-10,610,3800,65000000
+.
+Attack,A-10 Warthog,420,2578,10100000
+Attack,AV-8B Harrier,633,1036,24000000
+.
+Fighter,F-16 Fighting Falcon,1319,2622,25000000
+Fighter,F-22 Raptor,1500,1864,206000000
+.
+Passenger,737,544,2800,1600000
+Passenger,757,610,4488,5500000
