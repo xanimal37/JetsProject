@@ -5,7 +5,7 @@ public abstract class Jet {
 	protected String model;
 	protected int speed;
 	protected int range;
-	protected double price;
+	protected long price;
 	
 	//setters
 	protected void setModel(String model) {
@@ -20,7 +20,7 @@ public abstract class Jet {
 		this.range = range;
 	}
 	
-	protected void setPrice(double price) {
+	protected void setPrice(long price) {
 		this.price = price;
 	}
 	

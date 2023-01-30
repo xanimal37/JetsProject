@@ -3,18 +3,10 @@ package com.skilldistillery.app;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 import com.skilldistillery.entities.AirField;
-import com.skilldistillery.entities.AttackJet;
-import com.skilldistillery.entities.CargoJet;
-import com.skilldistillery.entities.FighterJet;
-import com.skilldistillery.entities.Jet;
-import com.skilldistillery.entities.PassengerJet;
-import com.skilldistillery.entities.ResearchJet;
 
 public class JetsApp {
 
@@ -38,7 +30,7 @@ public class JetsApp {
 		//create airfield
 		airField = new AirField();
 		//load starting state
-		List<Jet> jetdata= initializeAirfield("jets.txt");
+		initializeAirfield("jets.txt");
 		
 		System.out.println("Welcome to the AirField!");
 		System.out.println("What would you like to do?");
@@ -49,9 +41,8 @@ public class JetsApp {
 	}
 
 	// builds fleet
-	private List<Jet> initializeAirfield(String filename) {
-		// list to hold jet objects
-		List<Jet> jets = new ArrayList<>();
+	private void initializeAirfield(String filename) {
+		
 		// standard construction for buffer object to read text file
 		try (BufferedReader bufIn = new BufferedReader(new FileReader(filename))) {
 			String line;
@@ -61,50 +52,21 @@ public class JetsApp {
 				String[] jetData = line.split(",");
 				
 				//store the elements - parse them once
+				String type = jetData[0];
 				String model = jetData[1];
 				int speed = Integer.parseInt(jetData[2]);
 				int range = Integer.parseInt(jetData[3]);
-				double price = Double.parseDouble(jetData[4]);
+				long price = Long.parseLong(jetData[4]);
 				
 				//debug
 				//System.out.println(jetData[0]+"-"+model+"-"+speed+"-"+range+"-"+price);
 				//figured out the switch was missing a break!
+				airField.createJets(type,model,speed,range,price);
 				
-				//determine the type of jet based on the first element
-				switch(jetData[0]) {
-				case "Research":
-					//System.out.println("Adding a RESEARCH jet!");
-					Jet researchJet = new ResearchJet(model,speed,range,price);
-					airField.addToFleet(researchJet);
-					break;
-				case "Attack":
-					//System.out.println("Adding a ATTACK jet!");
-					Jet attackJet = new AttackJet(model,speed,range,price);
-					airField.addToFleet(attackJet);
-					break;
-				case "Cargo":
-					//System.out.println("Adding a CARGO jet!");
-					Jet cargoJet = new CargoJet(model,speed,range,price);
-					airField.addToFleet(cargoJet);
-					break;
-				case "Passenger":
-					//System.out.println("Adding a PASSENGER jet!");
-					Jet passengerJet = new PassengerJet(model,speed,range,price);
-					airField.addToFleet(passengerJet);
-					break;
-				case "Fighter":
-					//System.out.println("Adding a FIGHTER jet!");
-					Jet fighterJet = new FighterJet(model,speed,range,price);
-					airField.addToFleet(fighterJet);
-					break;
-				default:
-					break;
-				}
 			}
 		} catch (IOException e) {
 			System.err.println(e);
 		}
-		return jets;
 	}
 
 	// main program loop
