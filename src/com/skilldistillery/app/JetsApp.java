@@ -54,7 +54,7 @@ public class JetsApp {
 				//store the elements - parse them once
 				String type = jetData[0];
 				String model = jetData[1];
-				int speed = Integer.parseInt(jetData[2]);
+				double speed = Double.parseDouble(jetData[2]);
 				int range = Integer.parseInt(jetData[3]);
 				long price = Long.parseLong(jetData[4]);
 				

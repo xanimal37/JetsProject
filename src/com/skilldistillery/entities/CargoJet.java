@@ -2,7 +2,7 @@ package com.skilldistillery.entities;
 
 public class CargoJet extends Jet implements ICargoCarrier, IResearch{
 	
-	public CargoJet(String model, int speed, int range, long price) {
+	public CargoJet(String model, double speed, int range, long price) {
 		this.model = model;
 		this.speed=speed;
 		this.range = range;

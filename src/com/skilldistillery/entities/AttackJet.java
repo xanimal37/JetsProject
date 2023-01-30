@@ -2,7 +2,7 @@ package com.skilldistillery.entities;
 
 public class AttackJet extends Jet implements IFighter{
 	
-	public AttackJet(String model, int speed, int range, long price) {
+	public AttackJet(String model, double speed, int range, long price) {
 		this.model = model;
 		this.speed=speed;
 		this.range = range;

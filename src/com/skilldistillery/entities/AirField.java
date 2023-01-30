@@ -19,7 +19,7 @@ public class AirField {
 	}
 	
 	//creates jet
-	public void createJets(String type, String model, int speed,int range,long price) {
+	public void createJets(String type, String model, double speed,int range,long price) {
 		
 		//determine the type of jet based on the first element
 		switch(type) {
@@ -56,7 +56,7 @@ public class AirField {
 	// public method to get the fastest jet
 	public void getFastest() {
 		Jet fastestJet = null;
-		int fastestSpeed = 0;
+		double fastestSpeed = 0;
 
 		for (Jet j : fleet) {
 			if (j.getSpeed() > fastestSpeed) {
@@ -70,7 +70,7 @@ public class AirField {
 	// public method to get the jet with the longest range
 	public void getLongestRanged() {
 		Jet longestRange = null;
-		int bestRange = 0;
+		double bestRange = 0;
 
 		for (Jet j : fleet) {
 			if (j.getRange() > bestRange) {

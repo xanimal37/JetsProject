@@ -3,42 +3,42 @@ package com.skilldistillery.entities;
 public abstract class Jet {
 
 	protected String model;
-	protected int speed;
+	protected double speed;
 	protected int range;
 	protected long price;
 	
 	//setters
-	protected void setModel(String model) {
+	public void setModel(String model) {
 		this.model = model;
 	}
 	
-	protected void setSpeed(int speed) {
+	public void setSpeed(double speed) {
 		this.speed = speed;
 	}
 	
-	protected void setRange(int range) {
+	public void setRange(int range) {
 		this.range = range;
 	}
 	
-	protected void setPrice(long price) {
+	public void setPrice(long price) {
 		this.price = price;
 	}
 	
 	//getters
-	protected String getModel() {
+	public String getModel() {
 		return model;
 	}
 	
-	protected int getSpeed() {
+	public double getSpeed() {
 		return speed;
 	}
 	
-	protected int getRange() {
+	public int getRange() {
 		return range;
 	}
 	
 	//use this to calculate flight time for the jet
-	protected double getFlightTime() {
+	public double getFlightTime() {
 		double flightTime = getRange()/getSpeed();
 		return flightTime;
 	}
