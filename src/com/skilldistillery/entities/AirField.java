@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class AirField {
 
 	private ArrayList<Jet> fleet;
-	
-	//constructor (no no args constcutor)
+
+	// constructor (no no args constcutor)
 	public AirField() {
 		fleet = new ArrayList<Jet>();
 	}
@@ -17,35 +17,35 @@ public class AirField {
 	public void addToFleet(Jet jet) {
 		fleet.add(jet);
 	}
-	
-	//creates jet
-	public void createJets(String type, String model, double speed,int range,long price) {
-		
-		//determine the type of jet based on the first element
-		switch(type) {
+
+	// creates jet
+	public void createJets(String type, String model, double speed, int range, long price) {
+
+		// determine the type of jet based on the first element
+		switch (type) {
 		case "Research":
-			//System.out.println("Adding a RESEARCH jet!");
-			Jet researchJet = new ResearchJet(model,speed,range,price);
+			// System.out.println("Adding a RESEARCH jet!");
+			Jet researchJet = new ResearchJet(model, speed, range, price);
 			addToFleet(researchJet);
 			break;
 		case "Attack":
-			//System.out.println("Adding a ATTACK jet!");
-			Jet attackJet = new AttackJet(model,speed,range,price);
+			// System.out.println("Adding a ATTACK jet!");
+			Jet attackJet = new AttackJet(model, speed, range, price);
 			addToFleet(attackJet);
 			break;
 		case "Cargo":
-			//System.out.println("Adding a CARGO jet!");
-			Jet cargoJet = new CargoJet(model,speed,range,price);
+			// System.out.println("Adding a CARGO jet!");
+			Jet cargoJet = new CargoJet(model, speed, range, price);
 			addToFleet(cargoJet);
 			break;
 		case "Passenger":
-			//System.out.println("Adding a PASSENGER jet!");
-			Jet passengerJet = new PassengerJet(model,speed,range,price);
+			// System.out.println("Adding a PASSENGER jet!");
+			Jet passengerJet = new PassengerJet(model, speed, range, price);
 			addToFleet(passengerJet);
 			break;
 		case "Fighter":
-			//System.out.println("Adding a FIGHTER jet!");
-			Jet fighterJet = new FighterJet(model,speed,range,price);
+			// System.out.println("Adding a FIGHTER jet!");
+			Jet fighterJet = new FighterJet(model, speed, range, price);
 			addToFleet(fighterJet);
 			break;
 		default:
@@ -89,11 +89,6 @@ public class AirField {
 		}
 	}
 
-	// public method to remove a jet from the fleet
-	public void removeJet() {
-		// implement with input from a menu
-	}
-
 	// show all jets
 	public void displayFleet() {
 		for (Jet j : fleet) {
@@ -109,52 +104,78 @@ public class AirField {
 			}
 		}
 	}
-	
-	//scramble anything that can fight!
+
+	// scramble anything that can fight!
 	public void scrambleJets() {
-		for(Jet j: fleet) {
-			if(j instanceof IFighter) {
-				((IFighter)j).scramble();
+		for (Jet j : fleet) {
+			if (j instanceof IFighter) {
+				((IFighter) j).scramble();
 			}
 		}
 	}
-	
-	//input data to ad a jet to the fleet
+
+	// input data to ad a jet to the fleet
 	public void addAJet(Scanner input) {
+		String model;
+		double speed;
+		int range;
+		long price;
+
 		System.out.println("Enter the jet model: ");
-		String model = input.nextLine();
+		try {
+			model = input.nextLine();
+		} catch (Exception e) {
+			return;
+		}
 		System.out.println("Enter the jet's speed: ");
-		int speed = input.nextInt();
+		try {
+			speed = input.nextDouble();
+		} catch (Exception e) {
+			return;
+		}
 		System.out.println("Enter the jet's range: ");
-		int range= input.nextInt();
+		try {
+			range = input.nextInt();
+		} catch (Exception e) {
+			return;
+		}
 		System.out.println("Enter the jet's price: ");
-		long price= input.nextLong();
-		
-		Jet newJet = new JetImpl(model,speed,range,price);
-		
+		try {
+			price = input.nextLong();
+		} catch (Exception e) {
+			return;
+		}
+
+		Jet newJet = new JetImpl(model, speed, range, price);
+
 		addToFleet(newJet);
 	}
-	
-	//remove jet
+
+	// remove jet
 	public void removeAJet(Scanner input) {
 		Jet jetToRemove = null;
+		String mod = null;
 		System.out.println("Which model would you like to remove?");
-		String mod = input.nextLine();
-		for(Jet j:fleet) {
-			if(j.getModel().equals(mod)) {
-				jetToRemove=j;
+		try {
+			mod = input.nextLine();
+		} catch (Exception e) {
+			return;
+		}
+		for (Jet j : fleet) {
+			if (j.getModel().equals(mod)) {
+				jetToRemove = j;
 				break;
 			}
 		}
 		fleet.remove(jetToRemove);
 	}
-	
-	//fly research jets
+
+	// fly research jets
 	public void flyResearchJets() {
-		
-		for(Jet j: fleet) {
-			if(j instanceof IResearch) {
-				((IResearch)j).researchPayload();
+
+		for (Jet j : fleet) {
+			if (j instanceof IResearch) {
+				((IResearch) j).researchPayload();
 			}
 		}
 	}
