@@ -14,3 +14,7 @@ Java, git
 # Lessons Learned
 - for the longest time fleet initialization was creating two instances of each of the passenger jets. One of these instances was a fighter! Took a while but I finally figured out that my switch statement that handles jet instantiation was dropping through from PASSENGER and then creating a FIGHTER version of each jet because there was no BREAK statement.
 - using multiple interfaces allows some jets to change their purpose. So the cargo jets can be configured for research or cargo, just like they might in real life as the use of the plane changes throughout its life. Fighters and attack aircraft on the other hand are unlikely to change their use much.
+
+# To Do
+- didn't do any stretch goals. I would like to try these this week if I have time.
+- need more error checking on user input when they are adding/subtracting a jet
